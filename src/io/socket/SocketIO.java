@@ -211,7 +211,7 @@ public class SocketIO {
 			this.callback = callback;
 		}
 		if (this.callback != null && this.url != null) {
-			final String origin = this.url.getProtocol() + "://"
+			String origin = this.url.getProtocol() + "://"
 					+ this.url.getAuthority();
 
             String query = this.url.getQuery();
