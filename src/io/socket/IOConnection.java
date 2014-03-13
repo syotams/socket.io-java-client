@@ -295,9 +295,13 @@ class IOConnection implements IOCallback {
 		URLConnection connection;
 		try {
 			setState(STATE_HANDSHAKE);
+
+            String origin = IOConnection.this.url.getProtocol() + "://"
+                    + IOConnection.this.url.getAuthority();
             String query = IOConnection.this.url.getQuery();
-            query = query == null ? "" : query;
-			url = new URL(IOConnection.this.url.toString() + SOCKET_IO_1 + IOConnection.this.url.getQuery());
+            query = query == null ? "" : "?" + query;
+
+			url = new URL(origin + SOCKET_IO_1 + query);
 			connection = url.openConnection();
 			if (connection instanceof HttpsURLConnection) {
 				((HttpsURLConnection) connection)
