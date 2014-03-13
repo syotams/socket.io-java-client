@@ -216,7 +216,7 @@ public class SocketIO {
 
             String query = this.url.getQuery();
             if(!query.equals("")) {
-                origin += "/" + query;
+                origin += "/?" + query;
             }
 			this.namespace = this.url.getPath();
 			if (this.namespace.equals("/")) {
